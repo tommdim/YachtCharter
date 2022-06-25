@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>YachtCharter</title>
+
+  <link rel="stylesheet" href="">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600&display=swap"
+    rel="stylesheet">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/js/all.js"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../static/styles.css">
+
+
+</head>
+
+<body>
+
+  <section id="title">
+
+    <!-- Nav Bar -->
+    <div class="container-fluid navbaretta" id="external-container">
+      <nav class="navbar navbar-expand-lg navbar-dark ">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"> <img src="../static/img/l.png" alt="logo" class = "logo"> Pirrò </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#queries">Queriessss</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#pricing">Insert</a>
+              </li>
+              
+              {% if reg == 0 %}
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('changelogin')  }}">Log In</a>
+              </li>
+              
+              {% else %}
+              {%set reg = 1%}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle"data-bs-toggle="dropdown"  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Hi {{ username }}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">My Profile</a>
+                  <a class="dropdown-item" href="#">Spacc</a>
+                  <div class="dropdown-divider"></div>
+                  
+                  <a class="dropdown-item" href="{{url_for('success')}}">Logout</a>
+                </div>
+              </li>
+              <!--li class="nav-item">
+                <a class="nav-link" href="{{ url_for('login')  }}">Hi {{ username }}</a>
+              </li-->
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+      {%for message in get_flashed_messages()%}
+        
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          {{message}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {%endfor%}  
+
+
+            <!-- Title -->
+
+        </div>
+        </section>
+
+
+
+
+
+
+        <!-- Testimonials -->
+
+        <section id="queries">
+
+          <div id="testimonial-carousel" class="carousel slide" data-bs-ride="false" pause="false w">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <h2>Our Boats</h2>
+                <img class="queries-img" src="../static/img/barca.jpeg" alt="yacht">
+                <form action="\changeb">
+
+                  <input type="submit" value="Search" class="btn" />
+                  
+                  
+                </form>
+                
+              </div>
+              <div class="carousel-item">
+                <h2 class="testimonial-text">Our Staff</h2>
+                <p>
+                  <a href="crew.html">
+                      <img class="queries-img" src="../static/img/crew.jpeg" alt="crew">
+                      <form action="\changec">
+
+                        <input type="submit" value="Search" class="btn" />
+                        
+                        
+                      </form>
+                  </a>    
+              </p>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonial-carousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonial-carousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+              <span class="visually-hidden"></span>
+            </button>
+          </div>
+
+
+
+
+
+        </section>
+
+
+        <!-- Press -->
+
+        <section id="press">
+          <img class="press-logo" src="../static/img/pirro1.png" alt="pirro">
+          <img class="press-logo" src="../static/img/pirro2.png" alt="pirro">
+          <img class="press-logo" src="../static/img/pirro3.png" alt="pirro">
+          <img class="press-logo" src="../static/img/pirro4.png" alt="pirro">
+
+        </section>
+
+
+        <!-- Insert -->
+
+        <section id="pricing">
+
+          <h2>Inserisci chill che vuoi uagliuu</h2>
+          <p>Puoi inseri tutto fra barche persone pesci e fagioli, ua fra buono pesc e fagioul</p>
+
+          <div class="row">
+            <div class="pricing-box col-lg-6 col-md-6">
+              <div class="card">
+                <div class="card-header">
+                  <h2>Boats and related</h2>
+                </div>
+                <div class="card-body">
+                <h3>You can insert:</h3>
+                <p>New yachts</p>
+                <p>New seaports</p>
+                <p>New model of the boats</p>
+                <a href="../static/insert.html#boats">
+                <button class="btn btn-lg col-12 btn-dark " type="button">  Insert new Boats </button>
+                </a>
+              </form>
+              </div>
+            </div>
+          </div>
+            <div class="pricing-box col-lg-6 col-md-6">
+              <div class="card">
+                <div class="card-header">
+                  <h2>Employees</h2>
+                </div>
+                <div class="card-body">
+                  <h3>You can insert:</h3>
+                  <p>New Crew Members</p>
+                  <p>New Broker and Office Workers</p>
+                  <p>New Repair Workers</p>
+                  <a href="../static/insert.html#employees">
+                    <button class="btn btn-lg col-12 btn-dark " type="button">  Insert new Employees </button>
+                    </a>
+                </div>
+              </div>
+            </div>
+            <div class="pricing-box col-lg-6">
+              <div class="card">
+                <div class="card-header">
+                  <h2>Boats and related</h2>
+                </div>
+                <div class="card-body">
+                <h3>You can insert:</h3>
+                <p>New yachts</p>
+                <p>New seaports</p>
+                <p>New model of the boats</p>
+                <a href="../static/insert.html#boats">
+                <button class="btn btn-lg col-12 btn-dark " type="button">  Insert new Boats </button>
+                </a>
+              </form>
+              </div>
+            </div>
+            </div>
+          </div>
+        </section>
+
+
+        
+
+
+        <!-- Footer -->
+
+        <footer id="footer">
+          <i class="socials-icons fab fa-twitter"></i>
+          <i class="socials-icons fab fa-facebook-f"></i>
+          <i class="socials-icons fab fa-instagram"></i>
+          <i class="socials-icons fas fa-envelope"></i>
+
+          <p class="footer-copyright">© Copyright 2022 YachtCharter</p>
+
+        </footer>
+
+
+      </body>
+
+      </html>

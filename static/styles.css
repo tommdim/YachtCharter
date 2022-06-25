@@ -1,0 +1,321 @@
+body {
+    font-family: montserrat;
+}
+
+#title {
+    background-color: #2e85c6;
+}
+.navbar {
+    
+    padding:0;
+}
+
+.logo {
+    width: 20%;
+}
+
+.navbar-brand {
+    font-weight: 500;
+    font-size: 4rem;
+    font-family: ubuntu;
+    color: white;
+}
+
+.nav-link {
+    font-size: 1.2rem;
+    font-weight:lighter;
+    padding: 0, 15px
+}
+.container-fluid {
+    padding: 0;
+}
+h1 {
+    margin-top: 60px;
+    font-family: "Montserrat";
+    font-weight: 900;
+    font-size: 3rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+
+#external-container {
+    padding: 0% 5% 0.1% 5%;
+}
+.navabaretta {
+    padding-bottom: 0;
+}
+.dog-img {
+    width: 70%;
+    transform: rotate(25deg);
+    padding-bottom: 30px;
+    position: absolute;
+}
+
+.headingone {
+    margin-left: auto;
+    margin-right: auto;
+}
+.download-btn {
+    margin-bottom: 30px;
+}
+
+/* Features  */
+#features {
+    padding: 7% 10%;
+    text-align: center;
+    background-color: #fff;
+    position: relative;
+    z-index: 1;
+}
+
+.feature-icon {
+    margin: 100px auto 10px auto;
+    color: #ef8172;
+}
+
+.feature-icon:hover {
+    color: #ff4c68;
+
+}
+
+.feature-h3 {
+    font-weight: bolder;
+    font-size: 1.5rem;
+}
+
+.feature-p {
+    color: #8f8f8f;
+    margin-bottom: 90px;
+}
+
+@media (max-width: 1028px) {
+    .dog-img {
+        position: static;
+        transform: rotate(0);
+        width: 50%;
+    }
+
+    #title {
+        text-align: center;
+    }
+
+}
+.fcf {
+    width: 85%;
+}
+
+
+/* Queries section  */
+
+#queries {
+
+    text-align: center;
+    background-color: rgb(192, 192, 192);
+    color: #2e85c6;
+}
+
+h2 {
+    font-family: montserrat;
+    font-weight: bold;
+    font-size: 3rem;
+    line-height: 1.5;
+}
+
+h3 {
+    line-height: 1.5;
+}
+
+.queries-img {
+    width: 70%;
+    border-radius: 100%;
+    margin: 20px;
+}
+.carousel-inner {
+    padding: 7% 15%;
+}
+
+#press {
+    text-align: center;
+    background-color: rgb(192, 192, 192);
+    padding-bottom: 3%;
+}
+
+.press-logo {
+    width: 8%;
+    margin: 20px 20px 50px;
+}
+
+.carousel-control-next {
+    background-color: rgb(192, 192, 192);
+    border: none;
+    opacity: 100;
+}
+
+.carousel-control-prev {
+    background-color: rgb(192, 192, 192);
+    border: none;
+    opacity: 100;
+}
+
+.navbar-nav  {
+    margin-left: auto;
+}
+
+#pricing {
+    text-align: center;
+    padding: 100px;
+
+}
+
+.pricing-box {
+    padding: 2% 3%;
+}
+
+/* Call to action and footer sections */
+
+#cta {
+    background-color: #ff4c68;
+    text-align: center;
+    padding: 0, 12%
+
+}
+.cta-h3 {
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: rgb(0, 0, 0);
+    padding: 5%;
+    line-height: 1.5;
+
+}
+
+#riposta {
+    margin-top: 2%;
+}
+.query {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 80%;
+}
+h3 {
+    padding:3%;
+    margin-left:2%
+}
+
+.download-cta {
+    margin: 0 15px 7%;
+}
+
+#footer {
+    margin-top: 5%;
+    text-align: center;
+    background-color: #fff;
+    
+}
+
+.socials-icons {
+    margin: 0 11px 13px;
+}
+
+.footer-copyright {
+    color: #8f8f8f;
+}
+
+
+
+.btn {
+	display: block;
+	width: 100%;
+	background: #333;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	cursor: pointer;
+	outline: none;
+	margin-top: 1rem;
+}
+
+input {
+    width: 100%;
+}
+
+
+.hidden {
+    position: absolute;
+    display: hidden;
+    opacity: 0;
+    padding: 5%;
+    margin-left: -100px;
+    margin-top: -40px;
+    
+}
+
+
+/* login */
+
+.login-container{
+    margin-left: 0;
+    margin: 0 0 0 0;
+    background-color: #2e85c6;
+}
+.login-logo{
+    position: relative;
+    margin-left: -41.5%;
+}
+.login-logo img{
+    position: absolute;
+    width: 20%;
+    margin-top: -40px;
+    margin-left: -334px;
+    background: #ffffff;
+    border-radius: 4.5rem;
+    padding: 3%;
+}
+
+.login-img {
+    width: 80%;
+}
+.login-form-1{
+    padding: 9%;
+    
+    background:#a6b2f2;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form-1 {
+    text-align: center;
+    
+    color:rgb(255, 255, 255);
+}
+
+.login-form-2{
+    padding: 9%;
+    background: #130fd1;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form-2 {
+    text-align: center;
+    
+    color: #fff;
+}
+.btnSubmit{
+    font-weight: 600;
+    width: 50%;
+    color: #282726;
+    background-color: #fff;
+    border: none;
+    border-radius: 1.5rem;
+    padding:2%;
+}
+.btnForgetPwd{
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+}
+.btnForgetPwd:hover{
+    text-decoration:none;
+    color:#fff;
+}
+
+.form-group {
+    padding: 1%;
+}
