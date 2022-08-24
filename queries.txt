@@ -1,0 +1,199 @@
+YOYOYOYO
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (12817646.666666666,Gray Marine Motor Company, 90000, 2021-2-1, 150.0, 3000, 38452940); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (12817647.666666666,Gray Marine Motor Company, 90000, 2021-2-1, 150.0, 3000, 38452940); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (12819480.0,United Engine Corporation, 60000, 2020-9-11, 100.0, 2000, 38458440); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (24405689.666666668,Bmw Marine, 60000, 2001-12-13, 100.0, 2000, 73217069); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (22774690.666666668,Anzani, 45000, 1988-11-20, 75.0, 1500, 68324072); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (15937756.0,Kolomna Locomotive Works, 24000, 2010-12-26, 40.0, 800, 47813268); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (5165387.0,Kuznetsov Design Bureau, 45000, 2002-5-7, 75.0, 1500, 15496161); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (8582298.0,Anglo Belgian Corporation, 24000, 2006-11-4, 40.0, 800, 25746894); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (8469893.666666666,Mitsubishi Heavy Industries, 75000, 2015-2-10, 125.0, 2500, 25409681); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (21173242.0,Shanghai Diesel Engine, 18000, 2022-1-28, 30.0, 600, 63519726); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (26056555.333333332,Sintz Gas Engine Company, 30000, 2020-8-14, 50.0, 1000, 78169666); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (24760857.333333332,Man Diesel, 75000, 1982-6-6, 125.0, 2500, 74282572); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (3640768.3333333335,Oceanvolt, 18000, 2014-2-1, 30.0, 600, 10922305); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (19099968.666666668,Gale Products, 60000, 1996-9-19, 100.0, 2000, 57299906); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (15517167.0,Ge Transportation, 30000, 2021-9-3, 50.0, 1000, 46551501); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (10774973.333333334,Penzadieselmash, 30000, 2020-10-27, 50.0, 1000, 32324920); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (29387026.0,Charles Algernon Parsons, 18000, 2015-3-8, 30.0, 600, 88161078); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (25241065.0,Mitsubishi Heavy Industries, 24000, 2011-10-26, 40.0, 800, 75723195); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (7588818.666666667,Norman Engineering Co, 30000, 2012-11-12, 50.0, 1000, 22766456); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (14095973.666666666,Moteurs Baudouin, 24000, 2018-6-12, 40.0, 800, 42287921); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (8903630.666666666,Detroit Diesel, 30000, 2005-9-17, 50.0, 1000, 26710892); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (6254502.333333333,Siemens, 21000, 2005-8-25, 35.0, 700, 18763507); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (13884856.666666666,Westinghouse Electric Corporation, 60000, 2012-5-4, 100.0, 2000, 41654570); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (13884857.666666666,Westinghouse Electric Corporation, 60000, 2012-5-4, 100.0, 2000, 41654570); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (2166581.3333333335,Cooper Industries, 75000, 1986-7-1, 125.0, 2500, 6499744); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (26171586.333333332,Kuznetsov Design Bureau, 45000, 2017-7-21, 75.0, 1500, 78514759); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (19206505.666666668,Honda, 75000, 2020-4-16, 125.0, 2500, 57619517); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (1480205.3333333333,Yarrow Shipbuilders, 90000, 2022-10-16, 150.0, 3000, 4440616); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (16967317.0,Isotta Fraschini, 90000, 2021-2-7, 150.0, 3000, 50901951); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (3565870.6666666665,Shaanxi Diesel Engine Heavy Industry, 21000, 2001-2-14, 35.0, 700, 10697612); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (4674990.333333333,Gas Turbine Research Establishment, 21000, 2008-10-24, 35.0, 700, 14024971); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (26337699.333333332,Evinrude Outboard Motors, 18000, 2003-2-24, 30.0, 600, 79013098); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (22745206.666666668,Hitachi Zosen Corporation, 75000, 1996-7-12, 125.0, 2500, 68235620); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (9453228.333333334,Foos Gas Engine Company, 30000, 2000-1-5, 50.0, 1000, 28359685); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (9453229.333333334,Foos Gas Engine Company, 30000, 2000-1-5, 50.0, 1000, 28359685); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (4521396.666666667,Uec Saturn, 18000, 1997-4-19, 30.0, 600, 13564190); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (21630556.666666668,Firth Brown Steels, 30000, 2007-2-2, 50.0, 1000, 64891670); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (16108984.333333334,Fpt Industrial, 18000, 2020-8-25, 30.0, 600, 48326953); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (8577034.333333334,Peter William Willans, 18000, 2001-5-11, 30.0, 600, 25731103); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (4659330.0,Nissan Marine, 90000, 2015-12-25, 150.0, 3000, 13977990); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (5274321.0,Mtu Friedrichshafen, 21000, 2009-5-22, 35.0, 700, 15822963); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (24633353.666666668,Palmers Shipbuilding And Iron Company, 24000, 2016-12-21, 40.0, 800, 73900061); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (9035607.666666666,American Locomotive Company, 60000, 2020-3-4, 100.0, 2000, 27106823); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (20016213.0,Tohatsu, 30000, 2011-11-3, 50.0, 1000, 60048639); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (28487755.666666668,Kolomna Locomotive Works, 45000, 2002-12-23, 75.0, 1500, 85463267); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (5592263.666666667,Semt Pielstick, 18000, 1975-4-2, 30.0, 600, 16776791); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (1678388.6666666667,Honda Marine, 60000, 2022-12-15, 100.0, 2000, 5035166); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (1701839.3333333333,Honda, 75000, 2016-4-16, 125.0, 2500, 5105518); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (16084096.0,Rumo Plant, 30000, 2022-12-25, 50.0, 1000, 48252288); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (14049829.666666666,Boulton And Watt, 18000, 1984-3-16, 30.0, 600, 42149489); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (23159246.666666668,Victoria Machinery Depot, 30000, 2012-7-3, 50.0, 1000, 69477740); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (14445914.666666666,Yanmar, 18000, 2002-4-14, 30.0, 600, 43337744); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (22561267.666666668,Penzadieselmash, 60000, 2019-11-7, 100.0, 2000, 67683803); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (11551907.666666666,Bergen Engines, 21000, 2021-8-27, 35.0, 700, 34655723); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (27265407.666666668,Isotta Fraschini, 24000, 2005-1-19, 40.0, 800, 81796223); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (30414905.333333332,Moteurs Baudouin, 30000, 2019-1-14, 50.0, 1000, 91244716); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (26058822.333333332,, 24000, 1982-10-8, 40.0, 800, 78176467); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (26969597.333333332,Cammell Laird, 24000, 2018-6-28, 40.0, 800, 80908792); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (30895401.333333332,Wärtsilä, 90000, 1975-9-19, 150.0, 3000, 92686204); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (30636783.333333332,Penzadieselmash, 75000, 2022-7-10, 125.0, 2500, 91910350); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (30636784.333333332,Penzadieselmash, 75000, 2022-7-10, 125.0, 2500, 91910350); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (11453449.333333334,Yanmar, 75000, 2021-7-10, 125.0, 2500, 34360348); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (2873574.3333333335,Jsc Kuznetsov, 45000, 1995-3-20, 75.0, 1500, 8620723); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (29788234.333333332,Lamborghini, 75000, 2017-4-8, 125.0, 2500, 89364703); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (30393339.666666668,Westinghouse Electric Corporation, 75000, 1985-10-22, 125.0, 2500, 91180019); 
+ INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (30672870.0,Uljanik, 21000, 2007-8-22, 35.0, 700, 92018610); 

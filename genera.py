@@ -65,6 +65,8 @@ def genera_barche(dic1, dic2):
     print(boat_hull_number)
     cur = con.cursor()
     cur.execute('INSERT INTO public."Boat" (boat_hull_number, boat_name, boat_maker, boat_construction_year, located_seaport_ID, model_name, boat_cost) values (%s,%s,%s,%s,%s,%s,%s)', (boat_hull_number, boat_name, boat_maker ,boat_construction_year,located_seaport_id ,model_name , boat_cost))
+    with open("queries.txt", mode="a") as f:
+        f.write(f'INSERT INTO public."Boat" (boat_hull_number, boat_name, boat_maker, boat_construction_year, located_seaport_ID, model_name, boat_cost) values ({boat_hull_number}, {boat_name}, {boat_maker} ,{boat_construction_year},{located_seaport_id} ,{model_name} , {boat_cost})' )
     con.commit()
     cur.close()
     
@@ -82,6 +84,9 @@ def generaModelli(dic3, dic2):
     weight = int(random.randrange(1000,5000))
     cur = con.cursor()
     cur.execute("""INSERT INTO "Model of the boat"( model_name, model_brand, model_sleeping_places, num_sails, num_engines, model_type, length, draft, width, weight) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",(model_name, model_brand, model_sleeping_places, num_sails, num_engines, model_type, length, draft, width, weight))
+    with open("queries.txt", mode="a") as f:
+        f.write("\n")
+        f.write(f"""INSERT INTO "Model of the boat" (model_name, model_brand, model_sleeping_places, num_sails, num_engines, model_type, length, draft, width, weight) VALUES ({model_name}, {model_brand}, {model_sleeping_places}, {num_sails}, {num_engines}, {model_type}, {length}, {draft}, {width}, {weight})""")
     con.commit()
     cur.close()
     
@@ -96,7 +101,7 @@ def generaMotori(marche):
     for boat in ret:
         anno = random.randint(boat[2].year,2022)
         boat_hull_number = boat[0]
-        engine_purchase_date = f"{anno}-{random.randint(1,12)}-{random.randint(1,30)}"
+        engine_purchase_date = f"{anno}-{random.randint(1,12)}-{random.randint(1,28)}"
         engine_brand = marche[random.randint(0,len(marche)-1)]
         engine_displacement = [600,700,800,1000,1500,2000,2500,3000][random.randint(0,7)]
         engine_consumes = engine_displacement / 20
@@ -105,11 +110,16 @@ def generaMotori(marche):
             engine_serial_number = boat[0] / 3 + i
             if str(engine_serial_number) in motori:
                 continue
-            
-            cur.execute(""" INSERT INTO public."Engine"(
-	                    engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
-	                    VALUES (%s, %s, %s, %s, %s, %s, %s); """, (engine_serial_number,engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number))
-            con.commit()
+            else:
+                cur.execute(""" INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES (%s, %s, %s, %s, %s, %s, %s); """, (engine_serial_number,engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number))
+                with open("queries.txt", "a") as f:
+                    f.write("\n")
+                    f.write(f""" INSERT INTO public."Engine"(
+                            engine_serial_number, engine_brand, engine_cost, engine_purchase_date, engine_consumes, engine_displacement, boat_hull_number)
+                            VALUES ({engine_serial_number},{engine_brand}, {engine_cost}, {engine_purchase_date}, {engine_consumes}, {engine_displacement}, {boat_hull_number}); """)
+                con.commit()
     cur.close()        
     
     
