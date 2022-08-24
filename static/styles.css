@@ -319,3 +319,8 @@ input {
 .form-group {
     padding: 1%;
 }
+
+.alert {
+    position: absolute;
+    width: 90%;
+}
