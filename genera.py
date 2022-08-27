@@ -1,4 +1,5 @@
 from curses.ascii import isalpha
+from turtle import circle
 import numpy as np
 import random
 from flask import Flask, render_template, request, flash
@@ -122,8 +123,136 @@ def generaMotori(marche):
                 con.commit()
     cur.close()        
     
+def generaPersone(strade, nomi, cognomi):
+    lettere = "abcdefghijklmnopqrstuvxywz".upper()
+    numeri = "0123456789"
+    cur = con.cursor()
+    cur.execute(""" select person_id_num from public."Person" """)
+    ids = [el for lista in cur.fetchall() for el in lista]
+    person_id_num = f"{lettere[random.randint(0,25)]}{lettere[random.randint(0,25)]}{numeri[random.randint(0,9)]}{numeri[random.randint(0,9)]}{numeri[random.randint(0,9)]}{lettere[random.randint(0,25)]}{lettere[random.randint(0,25)]}"
+    while person_id_num in ids:
+        person_id_num = f"{lettere[random.randint(0,25)]}{lettere[random.randint(0,25)]}{numeri[random.randint(0,9)]}{numeri[random.randint(0,9)]}{numeri[random.randint(0,9)]}{lettere[random.randint(0,25)]}{lettere[random.randint(0,25)]}"
+    person_nat = random.randint(0,3)
+    civico = random.randint(1,250)
+    person_birth_date = f"{random.randint(1965,2002)}-{random.randint(1,12)}-{random.randint(1,28)}"
+    if person_nat == 0:
+        #italia
+        person_city = "Roma"
+        #genera via italiana + civico 
+        person_address = strade[person_nat][random.randint(0,len(strade[person_nat]) - 1)] +  ", " + str(civico)
+        person_name = nomi[person_nat][random.randint(0,len(nomi[person_nat]) - 1)]
+        person_surname = cognomi[person_nat][random.randint(0,len(cognomi[person_nat]) - 1)]
+        email = f"{person_surname.lower()}{person_name.lower()}@gmail.com"
+    elif person_nat == 1:
+        #germania
+        person_city = "Berlin"
+        person_address = strade[person_nat][random.randint(0,len(strade[person_nat]) - 1)] + ", " + str(civico)
+        person_name = nomi[person_nat][random.randint(0,len(nomi[person_nat]) - 1)]
+        person_surname = cognomi[person_nat][random.randint(0,len(cognomi[person_nat]) - 1)]
+        email = f"{person_surname.lower()}{person_name.lower()}@gmail.com"
+    
+    elif person_nat == 2:
+        #inghilterra
+        person_city = "London"
+        person_address = strade[person_nat][random.randint(0,len(strade[person_nat]) - 1)] + ", " + str(civico)
+        person_name = nomi[person_nat][random.randint(0,len(nomi[person_nat]) - 1)]
+        person_surname = cognomi[person_nat][random.randint(0,len(cognomi[person_nat]) - 1)]
+        email = f"{person_surname.lower()}{person_name.lower()}@gmail.com"
+    else:
+        person_city = "Paris"
+        person_address = strade[person_nat][random.randint(0,len(strade[person_nat]) - 1)] + ", " + str(civico)
+        person_name = nomi[person_nat][random.randint(0,len(nomi[person_nat]) - 1)]
+        person_surname = cognomi[person_nat][random.randint(0,len(cognomi[person_nat]) - 1)]
+        email = f"{person_surname.lower()}{person_name.lower()}@gmail.com"
+    
+    cur.execute(
+    """INSERT INTO public."Person"
+    (person_id_num, person_name, person_surname, person_birth_date, person_address, person_email, person_city)
+	VALUES (%s, %s, %s,%s,%s,%s,%s);""",(person_id_num, person_name, person_surname, person_birth_date, person_address, email, person_city)
+    )
+    con.commit()
+    cur.close()
+
+def generaEmployee():
+    # cose da mettere su emp che non sono in persona:
+    
+    cur = con.cursor()
+    cur.execute(""" select * from public."Person" """)
+    persone = cur.fetchall()
+    persona = persone[random.randint(0,len(persone)-1)]
+    person_id_num = persona[0]
+    city = persona[6]
+    emp_mail = f"{persona[2]}{city}@yachtcharter.com".lower()
+    cur.execute(""" select emp_mail from public."Employee" """)
+    mails = [str(el) for lista in cur.fetchall() for el in lista]
+    if str(emp_mail) in mails:
+        return
+    
+    emp_start_date = f"{random.randint(2018,2021)}-{random.randint(1,12)}-{random.randint(1,28)}"
+    emp_end_date = f"{random.randint(2018,2022)}-{random.randint(1,12)}-{random.randint(1,28)}"
+    while int(emp_end_date[:4]) <= int(emp_start_date[:4]):
+        emp_end_date = f"{random.randint(2018,2022)}-{random.randint(1,12)}-{random.randint(1,28)}"           
+    emp_id = int(int("".join([str(ord(c)) for c in persona[1]+persona[2]])) % 1e9)
+    #TODO controlla se il codice non va
+    emp_role = ["OfficeWorker", "Broker", "Crew", "Repair"][random.randint(0,3)]
     
     
+    
+    login_username = f"{persona[2]}{city}".lower()
+    user_password = f"{nomi_tedeschi[random.randint(0,len(nomi_tedeschi) -1)].title()}01"
+    emp_phone = int(emp_id) * 23 % 1e10
+    if city == "Roma":
+        phone_country_code = "+39" 
+        off_code = f"5010{random.randint(1,2)}"
+    elif city == "Paris":
+        phone_country_code = "+33" 
+        off_code = f"7500{random.randint(1,2)}"
+    elif city == "London":
+        phone_country_code = "+44" 
+        off_code = f"8500{random.randint(1,2)}"
+    else:
+        phone_country_code = "+49" 
+        off_code = f"9500{random.randint(1,2)}"
+
+    # cur.execute(""" select distinct "Employee".off_code from public."Employee" where "Employee".emp_role='Director' """)
+    # lista = [str(el) for lista in cur.fetchall() for el in lista]
+    # print(off_code)
+    # print(lista)
+    # if str(off_code) in lista:
+    #     print("non sono down")
+    #     return
+    contract_number = int(emp_id) * 61 % 1e10
+    
+    cur.execute("""select emp_id from public."Employee" """)
+    ids = [str(el) for lista in cur.fetchall() for el in lista]
+    if str(emp_id) in ids:
+        return
+    
+    cur.execute(
+        """
+        INSERT INTO public."Login credentials"(
+	login_username, user_password)
+	VALUES (%s, %s);
+        """, (login_username,user_password)
+    )
+    cur.execute(
+    """
+    INSERT INTO public."Contract"(
+	contract_number, contract_name, contract_surname, contract_type, contract_expiration_date, contract_starting_date, contract_salary)
+	VALUES (%s, %s, %s, %s, %s, %s, %s);""",(contract_number, persona[1], persona[2], "Employee", emp_end_date, emp_start_date, ["20000","30000","40000","50000","60000","70000"][random.randint(0,5)])
+    )
+    cur.execute(
+        """INSERT INTO public."Phone"(
+	phone_country_code, phone_number, person_id_num)
+	VALUES (%s, %s, %s);""", (phone_country_code, emp_phone, person_id_num)
+    )
+    cur.execute(
+    """INSERT INTO public."Employee"(
+	emp_id, emp_start_date, emp_end_date, emp_role, emp_mail, person_id_num, emp_phone, phone_country_code, login_username, contract_number, off_code)
+	VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);""",(emp_id, emp_start_date, emp_end_date, emp_role, emp_mail, person_id_num, int(emp_phone), phone_country_code, login_username, contract_number, int(off_code))
+    )
+    con.commit()
+    cur.close()
     
 if __name__ == "__main__":
     #genera_barche()
@@ -1469,8 +1598,1297 @@ Yarrow Shipbuilders
 Z
 Zavolzhye Engine Factory
     """
-    nomi_f = [nome.strip().title() for nome in femmine.split() if len(nome) > 1 and nome.isalpha()]
     
+    strade_parigi = """
+    !
+Boulevard di Parigi
+A
+Rue Agar
+Avenue Montaigne
+B
+Boulevard Beaumarchais
+Boulevard de Bonne-Nouvelle
+Boulevard de Rochechouart
+C
+Rue du Calvaire
+Boulevard des Capucines
+Avenue des Champs-Élysées
+Rue de la Chaussée-d'Antin
+Boulevard de Clichy
+Rue Clovis
+D
+Dictionnaire historique des rues de Paris
+F
+Rue du Faubourg-Saint-Martin
+Boulevard des Filles-du-Calvaire
+Avenue Foch
+G
+Avenue George V
+Rue de Grenelle
+H
+Boulevard Haussmann
+I
+Avenue d'Iéna
+Boulevard des Invalides
+Avenue d'Italie
+Boulevard des Italiens
+L
+Rue de Lappe
+Rue Lepic
+M
+Boulevard de la Madeleine
+Rue de Madrid
+Boulevard de Magenta
+Avenue de Malakoff
+Rue Mallet-Stevens
+Avenue Marceau
+Rue des Mathurins
+Quai de Montebello
+Boulevard Montmartre
+Rue Montorgueil
+Rue Mouffetard
+N
+Rue Neuve-Notre-Dame
+O
+Boulevard Ornano
+Rue Oudinot
+P
+Rue de la Paix
+Passage de la Duée
+Rue de Phalsbourg
+Boulevard Poissonnière
+Q
+Quai Anatole-France
+Quai d'Orsay
+Quai Voltaire
+R
+Boulevard Raspail
+Rue de l'Estrapade
+Rue de Rennes
+Rue de Rivoli
+Rue de Sèvres
+Rue du Bac 
+S
+Boulevard Saint-Denis
+Boulevard Saint-Germain
+Boulevard Saint-Martin
+Rue Saint-Martin
+Boulevard Saint-Michel
+Rue Saint-Nicaise
+Boulevard de Strasbourg 
+T
+Boulevard du Temple
+Rue du Temple
+Rue de Tolbiac
+V
+Rue de Varenne
+Rue de Vaugirard
+Rue de la Victoire
+W
+Avenue du Président-Wilson"""
+    
+    strade_roma = """
+    A
+Via Alessandrina
+Via Anagnina
+Via Appia Nuova
+Via Ardeatina
+Via Aurelia
+Autostrada A90
+Viale Aventino
+B
+Via del Babuino
+Via Baldo degli Ubaldi
+Via dei Banchi Vecchi
+Borgo Angelico
+Borgo Pio
+Borgo Sant'Angelo
+Borgo Santo Spirito
+Borgo Vittorio
+Via Borgognona
+Via delle Botteghe Oscure
+C
+Via Casilina
+Via Cassia
+Via Cavour
+Via dei Cessati Spiriti
+Circonvallazione Casilina
+Circonvallazione Ostiense
+Via Collatina
+Via Cristoforo Colombo
+Via della Conciliazione
+Via dei Condotti
+Via dei Coronari
+Via del Corso
+E
+Viale Europa
+F
+Via Flaminia
+Via dei Fori Imperiali
+Corso di Francia
+Via Frattina
+G
+Galleria Giovanni XXIII
+Galleria Pasa
+Gay street di Roma
+Circonvallazione Gianicolense
+Via Giulia
+Via Gregoriana
+I
+Corso d'Italia
+L
+Via Labicana
+Via Latina
+Via Laurentina
+Via della Lungara
+M
+Strada statale 8 Via del Mare
+Via Margutta
+Via Merulana
+N
+Via del Nazareno
+Via Nazionale
+Via Nomentana
+O
+Via Ostiense
+P
+Via Portuense
+Via Prenestina
+Q
+Via delle Quattro Fontane
+Via Quattro Novembre
+R
+Viale Regina Margherita
+Corso del Rinascimento
+Via di Ripetta
+S
+Via Sacra
+Via Salaria
+Via San Giovanni in Laterano
+Via delle Sette Chiese
+Via Sistina
+T
+Tangenziale Est dello Sdo di Roma
+Tangenziale Est di Roma
+Via Tiburtina Valeria
+Viale Palmiro Togliatti
+Viale di Trastevere
+Tridente
+Corso Trieste
+Via Trionfale
+Via del Tritone
+Via Tuscolana
+V
+Via Veientana
+Via Venti Settembre
+Via Ventiquattro Maggio
+Viale Ventuno Aprile
+Via del Teatro di Marcello
+Vicolo delle Vacche
+Corso Vittorio Emanuele II
+Via Vittorio Veneto
+    """
+    
+    strade_londra = """
+    A
+Avenue of Stars
+B
+Brick Lane
+Broadwick Street
+C
+Cambridge Circus
+Cannon Street
+Charing Cross Road
+Cheapside
+Chelsea Embankment
+Cornhill
+D
+Denmark Street
+E
+Elephant and Castle
+Exhibition Road
+F
+Fenchurch Street
+Finsbury Circus
+Fleet Street
+Flood Street
+Fulham Road
+G
+Gillespie Road
+Gloucester Road
+Golborne Road
+Gray's Inn Road
+Green Street
+Grosvenor Place
+H
+Harley Street
+High Holborn
+J
+Jermyn Street
+K
+King William Street
+King's Road
+Kingsway
+L
+Lime Street
+Lombard Street
+Ludgate Circus
+Ludgate Hill
+O
+Old Street
+P
+Park Lane
+Portobello Road
+Q
+Queen Victoria Street
+S
+Sloane Street
+T
+Thames Embankment
+Thames Street
+The Cut
+Tottenham Court Road
+Turnpike Lane
+V
+Victoria Road"""
+    
+    strade_berlino = """
+    A
+Ackerstraße 
+Adlergestell
+Albertstraße 
+Albrechtstraße 
+Alfred-Kowalke-Straße
+Allee der Kosmonauten 
+Almstadtstraße
+Alt-Biesdorf
+Alt-Blankenburg
+Alt-Friedrichsfelde
+Alt-Kaulsdorf
+Alt-Köpenick
+Alt-Mahlsdorf
+Alt-Mariendorf
+Alt-Marzahn
+Alt-Moabit
+Altonaer Straße 
+Am Berlin Museum
+Am Großen Wannsee
+Am Kupfergraben
+Am Sandwerder
+Am Treptower Park
+Am Zirkus
+Amalienstraße 
+An der Stechbahn
+Andreasstraße 
+Anna-Louisa-Karsch-Straße
+Arnimallee
+Augsburger Straße 
+Auguststraße 
+AVUS
+Axel-Springer-Straße
+B
+Badstraße 
+Baumschulenstraße 
+Beatrice-Zweig-Straße
+Behrenstraße
+Bergmannstraße 
+Berlin-Potsdamer Chaussee
+Berliner Allee 
+Berliner Straße 
+Bernauer Straße
+Bismarckstraße 
+Bleibtreustraße
+Blumberger Damm
+Blumenstraße 
+Bölschestraße
+Bornholmer Straße
+Boxhagener Straße
+Breite Straße 
+Brüderstraße 
+Brunnenstraße 
+Budapester Straße 
+Bülowstraße
+Bundesallee 
+Burgstraße 
+Buschallee 
+Buttmannstraße
+C
+Ceciliengärten
+Charlottenburger Straße 
+Chausseestraße
+Clayallee
+Columbiadamm
+D
+Danckelmannstraße
+Danziger Straße
+Dieffenbachstraße
+Dominicusstraße
+Dorfstraße 
+Dorotheenstraße 
+Dörpfeldstraße
+Drakestraße 
+E
+Eberswalder Straße
+Ebertstraße 
+Eislebener Straße 
+Elsa-Brändström-Straße 
+Elsenstraße 
+Enckestraße
+Entlastungsstraße
+Eschengraben
+F
+Falkenberger Chaussee
+Falkoniergasse
+Fasanenstraße 
+Fasanerieallee 
+Flatowallee
+Fontanepromenade
+Frankfurter Allee
+Französische Straße 
+Friedenstraße 
+Friedrichsgracht
+Friedrichstraße
+Friesenstraße 
+Friesickestraße
+G
+Gartenstraße 
+General-Pape-Straße
+Generalszug
+Gerichtstraße 
+Gertraudenstraße
+Giesebrechtstraße
+Glienicker Weg
+Glinkastraße
+Gneisenaustraße
+Gneiststraße
+Gottlieb-Dunkel-Straße
+Graefestraße
+Grazer Damm
+Greenwichpromenade
+Greifswalder Straße
+Griebenowstraße
+Groß-Berliner Damm
+Große Hamburger Straße
+Große Sternallee
+Grünauer Straße
+Grunerstraße 
+Grunewaldstraße 
+H
+Hallesches Ufer
+Hansastraße 
+Hardenbergstraße
+Hasenheide (Straße)
+Hasensprung
+Hauptstraße 
+Hauptstraße 
+Havelchaussee
+Havelschanze
+Heerstraße 
+Heinrich-Heine-Straße 
+Helenenhof 
+Herbert-von-Karajan-Straße 
+Hermannstraße 
+Hertzallee
+Herzbergstraße
+Heynstraße
+Hiroshimastraße
+Hofjägerallee
+Hohenzollerndamm
+Hoher Wallgraben
+Holzmarktstraße 
+Hönower Straße
+Hornstraße
+Hortensienstraße 
+Hufelandstraße
+Hultschiner Damm
+Husemannstraße 
+I
+In den Zelten
+Indira-Gandhi-Straße
+Innenstadtring 
+Invalidenstraße 
+J
+Jägerstraße 
+Jerusalemer Straße 
+Joachimsthaler Straße
+John-Foster-Dulles-Allee
+Judengasse 
+Jüdenstraße 
+Jüdenstraße 
+K
+Kadiner Straße
+Kaiserdamm
+Kantstraße
+Kapelle-Ufer
+Karl-Marx-Allee
+Karl-Liebknecht-Straße 
+Karl-Marx-Straße 
+Kastanienallee 
+Kietz 
+Kirchgasse 
+Klemkestraße
+Klosterstraße 
+Kniprodestraße 
+Knorrpromenade
+Koenigsallee
+Kolk (Spandau)
+Koloniestraße 
+Königin-Luise-Straße
+Königstraße 
+Königsweg 
+Königsweg 
+Königsweg 
+Konrad-Wolf-Straße
+Kopenhagener Straße
+Köpenicker Straße
+Kopernikusstraße 
+Körtestraße
+Kösliner Straße
+Köthener Straße
+Kottbusser Damm
+Krausnickstraße
+Kochstraße 
+Am Krögel
+Kulmer Straße
+Kurfürstendamm
+Kurfürstenstraße 
+L
+Landsberger Allee
+Langhansstraße 
+Lasdehner Straße
+Lehrter Straße
+Leipziger Straße 
+Liesenstraße
+Lietzenburger Straße
+Lindenstraße 
+Linienstraße 
+Littenstraße
+    """
+    
+    nomi_italiani = """
+    Adele
+Alessia
+Alice
+Anita
+Anna
+Arianna
+Asia
+Aurora
+Azzurra
+Beatrice
+Benedetta
+Bianca
+Camilla
+Carlotta
+Caterina
+Cecilia
+Chiara
+Chloe
+Elena
+Eleonora
+Elisa
+Emily
+Emma
+Eva
+Francesca
+Gaia
+Giada
+Ginerva
+Gioia
+Giorgia
+Giulia
+Greta
+Irene
+Isabel
+Ludovica
+Margherita
+Maria
+Marta
+Martina
+Matilde
+Melissa
+Mia
+Miriam
+Nicole
+Noemi
+Rebecca
+Sara
+Sofia
+Viola
+Vittoria
+Abramo
+Alessandro
+Alessio
+Andrea
+Antonio
+Brando
+Christian
+Daniel
+Davide
+Diego
+Domenico
+Edoardo
+Elia
+Emanuele
+Enea
+Federico
+Filippo
+Francesco
+Franco
+Gabriel
+Giacomo
+Gioele
+Giorgio
+Giovanni
+Giulio
+Giuseppe
+Jacopo
+Leonardo
+Lorenzo
+Luca
+Luigi
+Manuel
+Marco
+Matteo
+Mattia
+Michele
+Nathan
+Nicola
+Nicolo
+Pietro
+Raffaele
+Riccardo
+Salvatore
+Samuel
+Simone
+Stefano
+Thomas
+Tommaso
+Valerius
+Vincenzo
+"""
+    cognomi_italiani = """
+    Rossi
+Ferrari
+Russo
+Bianchi
+Romano
+Gallo
+Costa
+Fontana
+Conti
+Esposito
+Ricci
+Bruno
+De Luca
+Moretti
+Marino
+Greco
+Barbieri
+Lombardi
+Giordano
+Cassano
+Colombo
+Mancini
+Longo
+Leone
+Martinelli
+Marchetti
+Martini
+Galli
+Gatti
+Mariani
+Ferrara
+Santoro
+Marini
+Bianco
+Conte
+Serra
+Farina
+Gentile
+Caruso
+Morelli
+Ferri
+Testa
+Ferraro
+Pellegrini
+Grassi
+Rossetti
+D'Angelo
+Bernardi
+Mazza
+Rizzi
+Natale"""
+    nomi_tedeschi =  """
+    Tobias
+Jonas
+Ben
+Elias
+Ben
+Paolo
+Leon
+Finn
+Elias
+Jonas
+Luis
+Noè
+Felix
+Lukas
+Jürgen
+Karl
+Stefan
+Walter
+Uwe
+Hans
+Klaus
+Günter
+Adalia
+Erica
+Ernestina
+Federica
+Greta
+Heidi
+Jenell
+Kerstin
+Leyn
+Mallory
+Marlene
+Viveka
+Wanda
+Zelinda
+Abigail
+Adalheid
+Adelheid
+Agathe
+Agnes
+Agnethe
+Albertina
+Aleit
+Alexandra
+Alexia
+Alfreda
+Alina
+Aloisia
+Amalia
+Andrea
+
+Anelie
+Angela
+Angelika
+Anke
+Anna
+Annelie
+Anneliese
+Annemarie
+Anselma
+Antje
+Antonia
+Barbara
+Beata
+    """
+    cognomi_tedeschi = """
+Müller
+Schmidt
+Schneider
+Fischer
+Weber
+Meyer
+Wagner
+Becker
+Schulz
+Hoffmann
+Schäfer
+Koch
+Bauer
+Richter
+Klein
+Wolf
+Schröder
+Neumann
+Schwarz
+Zimmermann
+Braun
+Krüger
+Hofmann
+Hartmann
+Lange
+Schmitt
+Werner
+Schmitz
+Krause
+Meier
+Lehmann
+Schmid
+Schulze
+Maier
+Köhler
+Herrmann
+Körtig
+Walter
+Mayer
+Huber
+Kaiser
+Fuchs
+Peters
+Lang
+Scholz
+Möller
+Weiß
+Jung
+Hahn
+Schubert
+Vogel
+Friedrich
+Keller
+Günther
+Frank
+Berger
+Winkler
+Roth
+Beck
+Lorenz
+Baumann
+Franke
+Albrecht
+Schuster
+Simon
+Ludwig
+Böhm
+Winter
+Kraus
+Martin
+Schumacher
+Krämer
+Vogt
+Stein
+Jäger
+Otto
+Sommer
+Groß
+Seidel
+Heinrich
+Brandt
+Haas
+Schreiber
+Graf
+Schulte
+Dietrich
+Ziegler
+Kuhn
+Kühn
+Pohl
+Engel
+Horn
+Busch
+Bergmann
+Thomas
+Voigt
+Sauer
+Arnold
+Wolff
+Pfeiffer"""
+    nomi_francesi = """
+    Jean  
+Marie  
+Michel  
+Claude  
+Dominique  
+Philippe  
+Francis  
+Pierre  
+Alain  
+Nathalie  
+Bernard  
+Isabelle  
+Andre  
+Patrick  
+Catherine  
+Daniel  
+Jacques  
+Sylvie  
+Christian  
+Eric  
+Thierry  
+Christophe  
+Laurent  
+Pascal  
+Rene  
+Monique  
+Christine  
+Joseph  
+Olivier  
+Anne  
+Nicolas  
+Robert  
+Sandrine  
+Valerie  
+David  
+Jacqueline  
+Roger  
+Sophie  
+Guy  
+Didier  
+Bruno  
+Nicole  
+Marcel  
+Marc  
+Yves  
+Georges  
+Serge  
+Laurence  
+Julien  
+Patricia  
+Paul  
+Henri  
+Brigitte  
+Vincent  
+Christiane  
+Stephane  
+Corinne  
+Maurice  
+Annie  
+Louis  
+Stephanie  
+Christelle  
+Franck  
+Chantal  
+Frederic  
+Celine  
+Sebastien  
+Denis  
+Raymond  
+Aurelie  
+Gilles  
+Caroline  
+Veronique  
+Guillaume  
+Karine  
+Denise  
+Maria  
+Jeanne  
+Gerard  
+Delphine  
+Emilie  
+Claudine  
+Julie  
+Colette  
+Claire  
+Yvette  
+Sylvain  
+Pascale  
+Thomas  
+Florence  
+Roland  
+Madeleine  
+Charles  
+Alexandre  
+Sandra  
+Annick  
+Antoine  
+Mireille  
+Bernadette  
+Helene  
+    """
+    cognomi_francesi = """
+    Martin
+Bernard
+Robert
+Richard
+Durand
+Dubois
+Moreau
+Simon
+Laurent
+Michel
+Garcia
+Thomas
+Leroy
+David
+Morel
+Roux
+Girard
+Fournier
+Lambert
+Lefebvre
+Mercier
+Blanc
+Dupont
+Faure
+Bertrand
+Morin
+Garnier
+Nicolas
+Marie
+Rousseau
+Bonnet
+Vincent
+Henry
+Masson
+Robin
+Martinez
+Boyer
+Muller
+Chevalier
+Denis
+Meyer
+Blanchard
+Lemaire
+Dufour
+Gauthier
+Vidal
+Perez
+Perrin
+Fontaine
+Joly
+Jean
+da Silva
+Gautier
+Roche
+Roy
+Pereira
+Mathieu
+Roussel
+Duval
+Guerin
+Lopez
+Rodriguez
+Colin
+Aubert
+Lefevre
+Marchand
+Schmitt
+Picard
+Caron
+Sanchez
+Meunier
+Gaillard
+Louis
+Nguyen
+Lucas
+Dumont
+dos Santos
+Brunet
+Clement
+Brun
+Arnaud
+Giraud
+Barbier
+Rolland
+Charles
+Hubert
+Fernandes
+Fabre
+Moulin
+Leroux
+Dupuis
+Guillaume
+Roger
+Paris
+Guillot
+Dupuy
+Fernandez
+Carpentier
+Payet
+Ferreira"""
+    nomi_inglesi = """Adie
+Ethelburg 
+Angie 
+Ashleigh
+Ashton 
+Aubrey
+B
+Barnes 
+Barry 
+Basil 
+Bernadine
+Bethany 
+Betty
+Braden 
+Bradley
+Brent 
+Bret 
+Brett
+Burdine
+C
+Caden 
+Cadence 
+Carrington
+Charlene 
+Charles
+Charlton 
+Chay 
+Chet
+Christopher
+Clinton
+Corinna 
+Cowden 
+D
+Daris
+Darleen
+Darlene 
+Darnell
+Deb 
+Demi
+Dennis
+Diamond 
+Doreen 
+Dorothy 
+Dustin 
+E
+Earlene
+Elaine 
+Elfriede
+Eli 
+Emery 
+Emory 
+Evan
+G
+Gabriel 
+Georgiana
+Gladys 
+Greenbury
+Gregory 
+Greig 
+Gwen 
+H
+Harley 
+Hastings 
+Hazel 
+Heather 
+Helton 
+Henrietta 
+Heston 
+Holly 
+Hulda 
+I
+Increase 
+India 
+Irene 
+J
+Jackie 
+Jade 
+January 
+Jean 
+Jemma 
+Jenny 
+Jerald
+Jerrold
+Jerry 
+Jessie 
+Jethro
+Jigar 
+Jill
+Jocelyn
+Jodie
+Joey 
+Justine
+K
+Kate 
+Kathryn
+Keaton 
+Kendra
+Kerr 
+Kimball 
+Kitty 
+Kristy
+Kylie 
+L
+Laren
+Lawrence 
+Lawson 
+Leanne
+Lianne
+Louise 
+Luci
+M
+Maddox 
+Malford
+Marlene 
+Maud
+Melinda
+Melville 
+Miley 
+Millicent
+Mindi 
+Mindy
+Molly 
+Mort 
+N
+Nancy 
+Nelson 
+Nigel
+O
+Osbert
+Ottilie
+P
+Pamela 
+Pascoe
+Percy
+Pippa 
+Poppy 
+R
+Rebecca 
+Reynold
+Rhoda 
+Riley 
+Roland 
+Rosaleen
+Rosalie 
+Rosie 
+Ruby 
+Rupert 
+Ruth 
+S
+Savannah 
+Scarlett 
+Sharon
+Sheridan 
+Shiloh 
+Sidney 
+Stacy 
+Sydney 
+T
+Tammy 
+Tim 
+Timmy
+Timothy 
+Tracy 
+Travis 
+Trent 
+Trudie
+Tucker 
+V
+Velma
+Vicary
+Violet 
+W
+Walker 
+Warren 
+Whitney 
+Wilfried
+Woodrow """
+    cognomi_inglesi = """
+    Smith
+Jones
+Williams
+Taylor
+Brown
+Davies
+Evans
+Wilson
+Thomas
+Johnson
+Roberts
+Robinson
+Thompson
+Wright
+Walker
+White
+Edwards
+Hughes
+Green
+Hall
+Lewis
+Harris
+Clarke
+Patel
+Jackson
+Wood
+Turner
+Martin
+Cooper
+Hill
+Ward
+Morris
+Moore
+Clark
+Lee
+King
+Baker
+Harrison
+Morgan
+Allen
+James
+Scott
+Phillips
+Watson
+Davis
+Parker
+Price
+Bennett
+Young
+Griffiths
+Mitchell
+Kelly
+Cook
+Carter
+Richardson
+Bailey
+Collins
+Bell
+Shaw
+Murphy
+Miller
+Cox
+Richards
+Khan
+Marshall
+Anderson
+Simpson
+Ellis
+Adams
+Singh
+Begum
+Wilkinson
+Foster
+Chapman
+Powell
+Webb
+Rogers
+Gray
+Mason
+Ali
+Hunt
+Hussain
+Campbell
+Matthews
+Owen
+Palmer
+Holmes
+Mills
+Barnes
+Knight
+Lloyd
+Butler
+Russell
+Barker
+Fisher
+Stevens
+Jenkins
+Murray
+Dixon
+Harvey"""
+    
+    strade_roma = [strada.strip().title() for strada in strade_roma.splitlines() if len(strada.strip()) > 1]
+    strade_berlino = [strada.strip().title() for strada in strade_berlino.splitlines() if len(strada.strip()) > 1]
+    strade_londra = [strada.strip().title() for strada in strade_londra.splitlines() if len(strada.strip()) > 1]
+    strade_parigi = [strada.strip().title() for strada in strade_parigi.splitlines() if len(strada.strip()) > 1]
+    
+    strade = [strade_roma,  strade_berlino ,strade_londra, strade_parigi]
+    
+    cognomi_inglesi = [nome.strip().title() for nome in cognomi_inglesi.splitlines() if len(nome.strip()) > 1 if all(x.isalpha() or x.isspace() for x in nome)]
+    cognomi_italiani = [nome.strip().title() for nome in cognomi_italiani.splitlines() if len(nome.strip()) > 1 if all(x.isalpha() or x.isspace() for x in nome)]
+    cognomi_francesi = [nome.strip().title() for nome in cognomi_francesi.splitlines() if len(nome.strip()) > 1 if all(x.isalpha() or x.isspace() for x in nome)]
+    cognomi_tedeschi = [nome.strip().title() for nome in cognomi_tedeschi.splitlines() if len(nome.strip()) > 1 if all(x.isalpha() or x.isspace() for x in nome)]
+    
+    cognomi = [cognomi_italiani, cognomi_tedeschi, cognomi_inglesi,cognomi_francesi]
+    nomi_inglesi = [nome.strip().title() for nome in nomi_inglesi.splitlines() if len(nome.strip()) > 1 if all(x.isalpha() or x.isspace() for x in nome)]
+    nomi_italiani = [nome.strip().title() for nome in nomi_italiani.splitlines() if len(nome.strip()) > 1 if all(x.isalpha() or x.isspace() for x in nome)]
+    nomi_francesi = [nome.strip().title() for nome in nomi_francesi.splitlines() if len(nome.strip()) > 1 if all(x.isalpha() or x.isspace() for x in nome)]
+    nomi_tedeschi = [nome.strip().title() for nome in nomi_tedeschi.splitlines() if len(nome.strip()) > 1 if all(x.isalpha() or x.isspace() for x in nome)]
+    nomi = [nomi_italiani, nomi_tedeschi, nomi_inglesi, nomi_francesi ]
+    
+    nomi_f = [nome.strip().title() for nome in femmine.split() if len(nome) > 1 and nome.isalpha()]
     
     cantieri = [nome.strip().title() for nome in cantieri.splitlines() if len(nome) > 1 if all(x.isalpha() or x.isspace() for x in nome)]
     
@@ -1480,7 +2898,7 @@ Zavolzhye Engine Factory
     
     # for i in range(30):
     #     genera_barche(nomi_f, cantieri)
-    generaMotori(marche)
+    #generaMotori(marche)
     # for i in range(10):
     #     generaModelli(dicb, dicc)
     # cur = con.cursor()
@@ -1488,6 +2906,7 @@ Zavolzhye Engine Factory
     # print(cur.fetchall())
     # con.commit()
     # cur.close()
-    
+    for i in range(20):
+        print(generaEmployee())
     
     
